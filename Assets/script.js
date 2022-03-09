@@ -57,7 +57,7 @@ $(document).on("click", ".historyEntry", function () {
 });
 
 function renderSearchHistory(cityName) {
-  historyEl.empty();
+  historyEl.remove(searchHistoryArray);
   let searchHistoryArray = JSON.parse(localStorage.getItem("searchHistory"));
   for (let i = 0; i < searchHistoryArray.length; i++) {
     let newListItem = $("<li>").attr("class", "historyEntry");
