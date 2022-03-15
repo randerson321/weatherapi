@@ -1,4 +1,3 @@
-// Global Variables
 var cities = [];
 var weatherApiUrl = "https://api.openweathermap.org";
 var weatherApiKey = "9133d1b865c8a0516b746466fd579fca";
@@ -6,23 +5,20 @@ var weatherApiKey = "9133d1b865c8a0516b746466fd579fca";
 // DOM Elements
 var cityInput = $("#enter-city");
 var cityNameEl = $("#city-name");
-
 var searchButton = $("#searchBtn");
 var clearButton = $("#clearBtn");
-
 var timeDisplayEl = $("#currentDay");
-
 var currentTemp = $("#temperature");
 var currentPic = $("#current-picture");
 var currentHumid = $("#humidity");
 var currentWind = $("#wind-speed");
 var currentUV = $("#uv-index");
-
 var historyEle = $("#history");
 var fiveDays = $("#fiveday-contained");
 var todaysWeather = $("#todaysWeather");
 var cardRow = $(".card-row");
 
+// Timer and Date
 
 function displayTime() {
   var rightNow = moment().format("MMMM Do YYYY, h:mm:ss a");
@@ -57,12 +53,12 @@ $(document).on("click", ".historyEntry", function () {
 });
 
 function renderSearchHistory(cityName) {
-  historyEl.remove(searchHistoryArray);
+  historyEl.empty();
   let searchHistoryArray = JSON.parse(localStorage.getItem("searchHistory"));
   for (let i = 0; i < searchHistoryArray.length; i++) {
     let newListItem = $("<li>").attr("class", "historyEntry");
     newListItem.text(searchHistoryArray[i]);
-    searchHistoryEl.append(newListItem);
+    searchHistoryEl.prepend(newListItem);
   }
 }
 
@@ -220,5 +216,3 @@ function createForecastCard(date, icon, temp, humidity) {
   cardHumidity.text(`Humidity: ${humidity}%`);
   fiveDayCardEl.append(cardDate, cardIcon, cardTemp, cardHumidity);
 }
-
-// Event Listeners
